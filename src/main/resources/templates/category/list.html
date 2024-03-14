@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+
+    <title>List Category</title>
+
+</head>
+<body>
+<div class="container">
+    <h1 class="my-3" style="color: red">Category Management</h1>
+    <div class="row d-flex mx-3">
+        <div class="col-9">
+            <a class="btn btn-warning" role="button" th:href="@{/create-cate}">Add Category</a>
+        </div>
+        <div class="col-3">
+            <form class="d-flex" role="search" action="" method="post">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="country">
+                <a class="btn btn-outline-secondary" type="submit">Search</a>
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Stt</th>
+            <th scope="col">Name Category</th>
+            <th scope="col">Address</th>
+
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="c , Status: ${categories}">
+                <td th:text="${Status.count}"></td>
+                <td th:text="${c.getName()}"></td>
+                <td th:text="${c.getAddress()}"></td>
+
+                <td>
+                    <a class="btn btn-warning" role="button" th:href="@{/edit-cate/{id}(id=${c.id})}">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-warning" role="button" th:href="@{/delete/{id}(id=${c.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

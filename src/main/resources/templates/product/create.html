@@ -20,6 +20,16 @@
                 <label for="price">Price</label>
                 <input type="text" class="form-control" id="price" th:field="*{price}">
             </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Add pictures</label>
+                <input class="form-control" type="file" id="formFile" th:field="*{imageAt}">
+            </div>
+            <div class="col-md-3 position-relative">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-select" id="category" th:field="*{category.id}" required>
+                    <option selected th:each="c: ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+            </div>
             <div class="form-group mt-2">
                 <button class="btn btn-success" type="submit" value="save">Add new</button>
                 <button class="btn btn-secondary" type="button" onclick="cancelForm()">Cancel</button>

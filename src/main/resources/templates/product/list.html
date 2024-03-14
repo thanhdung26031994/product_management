@@ -10,6 +10,12 @@
     <h1 class="my-3" style="color: red">Product Management</h1>
     <div class="row d-flex mx-3">
         <div class="col-9">
+            <a class="btn btn-warning" role="button" th:href="@{/categories}">Category</a>
+        </div>
+    </div>
+    <br>
+    <div class="row d-flex mx-3">
+        <div class="col-9">
             <a class="btn btn-warning" role="button" th:href="@{products/create}">Add Product</a>
         </div>
         <div class="col-3">
@@ -25,6 +31,9 @@
             <th scope="col">Stt</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
+            <th scope="col">NameCate</th>
+            <th scope="col">Address</th>
+<!--            <th scope="col">Image</th>-->
 
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -36,16 +45,21 @@
                 <td th:text="${Status.count}"></td>
                 <td th:text="${p.getName()}"></td>
                 <td th:text="${p.getPrice()}"></td>
-
+                <td th:text="${p.getCategory().getName()}"></td>
+                <td th:text="${p.getCategory().getAddress()}"></td>
+<!--                <td>-->
+<!--                    <img th:src="@{'/img/'+${p.getImageAt()}}" width="150" alt="">-->
+<!--                </td>-->
                 <td>
-                    <a class="btn btn-warning" role="button" th:href="@{/product/{id}/update(id=${p.id})}">Edit</a>
+                    <a class="btn btn-warning" role="button" th:href="@{/products/{id}/update(id=${p.id})}">Edit</a>
                 </td>
                 <td>
-                    <a class="btn btn-warning" role="button" th:href="@{/product/{id}/delete(id=${p.id})}">Delete</a>
+                    <a class="btn btn-warning" role="button" th:href="@{/products/{id}/delete(id=${p.id})}">Delete</a>
                 </td>
             </tr>
         </tbody>
     </table>
+
 </div>
 
 <footer th:replace="/layout :: footer"></footer>
